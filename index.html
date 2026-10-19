@@ -1,1 +1,106 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Profile của tôi 💗</title>
+<style>
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  font-family: Arial, sans-serif;
+  color: white;
+  text-align: center;
+  background: linear-gradient(135deg,#390d25,#bd285f,#ff91b5);
+  overflow: hidden;
+}
+.card {
+  width: 300px;
+  padding: 30px;
+  border-radius: 25px;
+  background: #ffffff25;
+  border: 1px solid #ffffff66;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 0 40px #ff8eb5;
+  animation: appear 1s ease;
+}
+.avatar {
+  width: 100px;
+  height: 100px;
+  margin: auto;
+  border-radius: 50%;
+  background: #ffe0eb;
+  display: grid;
+  place-items: center;
+  font-size: 55px;
+}
+h1 { color: #ffe0eb; }
+p { line-height: 1.8; }
+a,button {
+  display: inline-block;
+  padding: 12px 16px;
+  margin: 5px;
+  border: none;
+  border-radius: 25px;
+  background: #fff0f6;
+  color: #b51f59;
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+.heart {
+  position: fixed;
+  bottom: -30px;
+  animation: fly 6s linear forwards;
+  pointer-events: none;
+}
+@keyframes fly {
+  to { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
+}
+@keyframes appear {
+  from { opacity: 0; transform: translateY(25px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="avatar">🐰</div>
+  <h1>Tên Của Bạn 💗</h1>
+  <p>
+    Xin chào, mình là Tên Của Bạn! 🌷<br>
+    Thích chơi game, nghe nhạc và chill.<br>
+    Chào mừng đến profile của mình!
+  </p>
+  <a href="https://www.tiktok.com/" target="_blank">TikTok</a>
+  <a href="https://discord.com/" target="_blank">Discord</a>
+  <br>
+  <button onclick="playMusic()">🎵 Phát nhạc</button>
+  <audio id="music" loop src="music.mp3"></audio>
+  <p>Made with 💗</p>
+</div>
+<script>
+const symbols = ["💗","♡","🌸","✨","🌷"];
+setInterval(() => {
+  const h = document.createElement("span");
+  h.className = "heart";
+  h.textContent = symbols[Math.floor(Math.random()*symbols.length)];
+  h.style.left = Math.random()*100 + "vw";
+  h.style.fontSize = (15+Math.random()*20) + "px";
+  document.body.appendChild(h);
+  setTimeout(() => h.remove(), 6000);
+}, 400);
 
+function playMusic() {
+  const m = document.getElementById("music");
+  if (m.paused) {
+    m.play().catch(() => alert("Hãy thêm file music.mp3 vào repository nhé!"));
+  } else {
+    m.pause();
+  }
+}
+</script>
+</body>
+</html>
